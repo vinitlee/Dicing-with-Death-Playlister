@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome to Firebase Hosting</title>
-
+    
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/10.2.0/firebase-app-compat.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -18,72 +18,157 @@
     <script defer src="/__/firebase/10.2.0/firebase-remote-config-compat.js"></script>
     <script defer src="/__/firebase/10.2.0/firebase-performance-compat.js"></script>
     <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
+        initialize the SDK after all desired features are loaded, set useEmulator to false
+        to avoid connecting the SDK to running emulators.
     -->
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
+    
     <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+        #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+        #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+        #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+        #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+        #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+        #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+        #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+        @media (max-width: 600px) {
+            body, #message { margin-top: 0; background: white; box-shadow: none; }
+            body { border-top: 16px solid #ffa100; }
         }
-      });
+    </style>
+</head>
+<body>
+    <h1><a href="#" target=”_blank” id="video_url"><span id="title">Title</span></a></h1>
+    <h2>Video <span id="video_num">0</span></h2>
+    <h2><a href="#" target=”_blank” id="wiki_url">Wiki entry</a></span></h2>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadEl = document.querySelector('#load');
+            // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+            // // The Firebase SDK is initialized and available here!
+            //
+            // firebase.auth().onAuthStateChanged(user => { });
+            // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+            // firebase.firestore().doc('/foo/bar').get().then(() => { });
+            // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+            // firebase.messaging().requestPermission().then(() => { });
+            // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+            // firebase.analytics(); // call to activate
+            // firebase.analytics().logEvent('tutorial_completed');
+            // firebase.performance(); // call to activate
+            //
+            // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+            
+            try {
+                let app = firebase.app();
+                let features = [
+                'auth', 
+                'database', 
+                'firestore',
+                'functions',
+                'messaging', 
+                'storage', 
+                'analytics', 
+                'remoteConfig',
+                'performance',
+                ].filter(feature => typeof app[feature] === 'function');
+                loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+            } catch (e) {
+                console.error(e);
+                loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+            }
+        });
     </script>
-  </body>
+    <script src="dwd_data.js"></script>
+    <script>
+        function update_episode(ep) {
+            current_ep = Math.min(Math.max(ep,0),episodes.length-1)
+            
+            ep = episodes[current_ep]
+            
+            title_el.innerText = ep.title
+            num_el.innerText = ep.num
+            url_el.href = generateUrl(ep)
+            wiki_el.href = generateWikiUrl(ep)
+        }
+        
+        title_el = document.querySelector('#title')
+        num_el   = document.querySelector('#video_num')
+        url_el   = document.querySelector('#video_url')
+        wiki_el  = document.querySelector('#wiki_url')
+        
+        var current_ep = localStorage.getItem('current_ep');
+        if (current_ep !== null) {
+            // Do something with the retrieved value
+            console.log('Retrieved current episode:', current_ep);
+        } else {
+            // Handle the case where the key doesn't exist in local storage
+            console.log('Key not found in local storage');
+            localStorage.setItem('current_ep', 0);
+        }
+        
+        update_episode(current_ep)
+        
+        document.addEventListener('keydown', function(event) {
+            // Check if the key pressed is the left arrow key (keyCode 37 or key "ArrowLeft")
+            if (event.key === 'ArrowLeft' || event.keyCode === 37) {
+                // Your code to handle the left arrow key press goes here
+                // For example, you can call a function or perform some action
+                update_episode(current_ep - 1);
+            }
+            
+            // Check if the key pressed is the right arrow key (keyCode 39 or key "ArrowRight")
+            if (event.key === 'ArrowRight' || event.keyCode === 39) {
+                // Your code to handle the right arrow key press goes here
+                // For example, you can call a function or perform some action
+                update_episode(current_ep + 1);
+            }
+        });
+        
+        let startY = null;
+        
+        document.addEventListener('touchstart', function(event) {
+            // Get the initial Y coordinate of the touch
+            startY = event.touches[0].clientY;
+        });
+        
+        document.addEventListener('touchmove', function(event) {
+            if (startY === null) {
+                return; // No touchstart event recorded
+            }
+            
+            // Calculate the distance the finger has moved vertically
+            const currentY = event.touches[0].clientY;
+            const deltaY = currentY - startY;
+            
+            // Define a threshold for vertical movement (e.g., 50 pixels)
+            const threshold = 50;
+            
+            if (Math.abs(deltaY) >= threshold) {
+                update_episode(current_ep + Math.sign(deltaY));
+                
+                // Reset startY to null to track the next touchstart
+                startY = currentY;
+            }
+        });
+        
+        document.addEventListener('touchend', function() {
+            // Reset startY when the touch ends
+            startY = null;
+        });
+        
+        window.addEventListener('beforeunload', function (event) {
+            // This is where you can execute your code.
+            // For example, you can send an analytics event or perform cleanup tasks.
+            
+            localStorage.setItem('current_ep', current_ep);
+            
+            // You can also customize the confirmation message shown to the user.
+            // event.returnValue = 'Are you sure you want to leave?';
+        });
+        
+    </script>
+</body>
 </html>
