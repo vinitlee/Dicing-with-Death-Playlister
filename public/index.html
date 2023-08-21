@@ -37,6 +37,18 @@
             body { border-top: 16px solid #ffa100; }
         }
     </style>
+    <link rel="manifest" href="/manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+            .then(function(registration) {
+                console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(function(error) {
+                console.error('Service Worker registration failed:', error);
+            });
+        }
+    </script>
 </head>
 <body>
     <h1><a href="#" target=”_blank” id="video_url"><span id="title">Title</span></a></h1>
@@ -127,36 +139,36 @@
             }
         });
         
-        let startY = null;
+        let startX = null;
         
         document.addEventListener('touchstart', function(event) {
             // Get the initial Y coordinate of the touch
-            startY = event.touches[0].clientY;
+            startX = event.touches[0].clientX;
         });
         
         document.addEventListener('touchmove', function(event) {
-            if (startY === null) {
+            if (startX === null) {
                 return; // No touchstart event recorded
             }
             
             // Calculate the distance the finger has moved vertically
-            const currentY = event.touches[0].clientY;
-            const deltaY = currentY - startY;
+            const currentX = event.touches[0].clientX;
+            const deltaX = currentX - startX;
             
             // Define a threshold for vertical movement (e.g., 50 pixels)
-            const threshold = 50;
+            const threshold = 20;
             
-            if (Math.abs(deltaY) >= threshold) {
-                update_episode(current_ep + Math.sign(deltaY));
+            if (Math.abs(deltaX) >= threshold) {
+                update_episode(current_ep + Math.sign(deltaX));
                 
-                // Reset startY to null to track the next touchstart
-                startY = currentY;
+                // Reset startX to null to track the next touchstart
+                startX = currentX;
             }
         });
         
         document.addEventListener('touchend', function() {
-            // Reset startY when the touch ends
-            startY = null;
+            // Reset startX when the touch ends
+            startX = null;
         });
         
         window.addEventListener('beforeunload', function (event) {
